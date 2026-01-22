@@ -1,0 +1,7 @@
+Cabeçalho para biblioteca
+
+Declaração de constantes e variáveis
+
+Definição de rotinas callback
+
+Função principal
