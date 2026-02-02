@@ -29,19 +29,35 @@ int main(int argc, char *argv[])
       printf("LED%d encontrado com sucesso.\n", i);
     }
   }
-
+  
+  int turn_on = 0;
+  
   while (wb_robot_step(TIME_STEP) != -1)
   {
-    wb_led_set(led[0], 1);
-    wb_led_set(led[1], 1);
-    wb_led_set(led[2], 1);
-    wb_led_set(led[3], 1);
-    wb_led_set(led[4], 1);
-    wb_led_set(led[5], 1);
-    wb_led_set(led[6], 1);
-    wb_led_set(led[7], 1);
-    wb_led_set(led[8], 1);
-    wb_led_set(led[9], 1);
+    if (turn_on){
+    wb_led_set(led[0], 255);
+    wb_led_set(led[1], 255);
+    wb_led_set(led[2], 255);
+    wb_led_set(led[3], 255);
+    wb_led_set(led[4], 255);
+    wb_led_set(led[5], 255);
+    wb_led_set(led[6], 255);
+    wb_led_set(led[7], 255);
+    wb_led_set(led[8], 255);
+    wb_led_set(led[9], 255);
+    } else {
+    wb_led_set(led[0], 0);
+    wb_led_set(led[1], 0);
+    wb_led_set(led[2], 0);
+    wb_led_set(led[3], 0);
+    wb_led_set(led[4], 0);
+    wb_led_set(led[5], 0);
+    wb_led_set(led[6], 0);
+    wb_led_set(led[7], 0);
+    wb_led_set(led[8], 0);
+    wb_led_set(led[9], 0);
+    }
+    
   };
 
   wb_robot_cleanup();

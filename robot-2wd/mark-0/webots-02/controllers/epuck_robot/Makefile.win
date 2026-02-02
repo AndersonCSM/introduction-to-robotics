@@ -1,0 +1,37 @@
+CC := g++
+TARGET := epuck_robot.exe
+
+SRC := \
+  main.cpp \
+  control.cpp \
+  datapath.cpp \
+  simulation/simulation.cpp \
+  features/features.cpp \
+  sensors/sensors.cpp \
+  sensors/environmental.cpp \
+  sensors/motion.cpp
+
+OBJ := $(SRC:.cpp=.o)
+
+WEBOTS_HOME ?= C:/Program Files/Webots
+WEBOTS_INCLUDE := $(WEBOTS_HOME)/include/controller/c
+WEBOTS_LIB := $(WEBOTS_HOME)/lib/controller
+
+CFLAGS := -std=c++17 -Wall -Wextra -Iinclude -I$(WEBOTS_INCLUDE)
+LDFLAGS := -L$(WEBOTS_LIB) -lController
+
+all: $(TARGET)
+
+$(TARGET): $(OBJ)
+	$(CC) $(OBJ) -o $@ $(LDFLAGS)
+
+%.o: %.cpp
+	$(CC) $(CFLAGS) -c $< -o $@
+
+run: $(TARGET)
+	./$(TARGET)
+
+clean:
+	@del /Q $(OBJ) $(TARGET) 2>nul || exit 0
+
+.PHONY: all run clean

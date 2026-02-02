@@ -1,0 +1,119 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.18171821395548474 -0.16807369730732408 0.9688806546681973 4.6029552234168545
+  position 0.08876258741688006 0.5723588669384213 0.24757459777705162
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+}
+Robot {
+  translation 0 0 0.1
+  children [
+    DEF robot_body Pose {
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.045
+          }
+        }
+      ]
+    }
+    DEF robot_wheel_l HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor 0.05 0 0.025
+      }
+      device [
+        RotationalMotor {
+          name "controller code"
+        }
+      ]
+      endPoint Solid {
+        children [
+          DEF wheel Pose {
+            translation 0.05 0 -0.035
+            rotation 0 1 0 1.57
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 1 0 0
+                }
+                geometry Cylinder {
+                  height 0.01
+                  radius 0.025
+                }
+              }
+            ]
+          }
+        ]
+        boundingObject USE wheel
+      }
+    }
+    DEF robot_wheel HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor -0.05 0 0.025
+      }
+      device [
+        RotationalMotor {
+          name "controller code"
+        }
+      ]
+      endPoint Solid {
+        children [
+          DEF wheel Pose {
+            translation -0.05 0 -0.035
+            rotation 0 1 0 1.57
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 1 0 0
+                }
+                geometry Cylinder {
+                  height 0.01
+                  radius 0.025
+                }
+              }
+            ]
+          }
+        ]
+        name "solid(1)"
+        boundingObject USE wheel
+      }
+    }
+    Solid {
+      children [
+        Pose {
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 1 0 0
+                roughness 1
+                metalness 0
+              }
+              geometry Box {
+                size 0.015 0.1 0.005
+              }
+            }
+          ]
+        }
+      ]
+      name "left_eye"
+    }
+  ]
+  boundingObject USE robot_body
+}

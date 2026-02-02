@@ -1,0 +1,13 @@
+{
+    "C_Cpp.default.compilerPath": "C:/MinGW/bin/g++.exe",
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/controllers/epuck_robot/include",
+        "${workspaceFolder}/**",
+        "C:/Program Files/Webots/include/controller/c"
+    ],
+    "C_Cpp.default.browse.path": [
+        "${workspaceFolder}",
+        "C:/Program Files/Webots/include/controller/c"
+    ],
+    "C_Cpp.default.cppStandard": "c++17"
+}
