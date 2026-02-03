@@ -26,11 +26,7 @@ The following simulators were used for project development:
 
 ## Technologies
 
-- Python programming language
-
-## Contact
-
-* Email: andersoncarlos799@gmail.com
+- Python and C programming languages.
 
 ## References
 
